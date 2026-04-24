@@ -203,15 +203,96 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            animation: slideFade 20s infinite;
+        }
+
+        .hero-slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+        }
+
+        .hero-slide:nth-child(1) {
+            animation-delay: 0s;
+            background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .hero-slide:nth-child(2) {
+            animation-delay: 5s;
+            background-image: url('https://images.unsplash.com/photo-1633945274405-b6c8069047b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .hero-slide:nth-child(3) {
+            animation-delay: 10s;
+            background-image: url('https://images.unsplash.com/photo-1589301760014-d929f39ce9b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+
+        .hero-slide:nth-child(4) {
+            animation-delay: 15s;
+            background-image: url('https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+
+        @keyframes slideFade {
+            0% {
+                opacity: 0;
+                transform: scale(1.05);
+            }
+
+            5% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            25% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            30% {
+                opacity: 0;
+                transform: scale(1.05);
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
         .hero-content {
+            position: relative;
+            z-index: 2;
             max-width: 800px;
             padding: 0 2rem;
             animation: fadeIn 1.5s ease-out;
@@ -343,6 +424,18 @@
             border-radius: 8px;
             cursor: pointer;
             position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .list-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
         }
 
         .list-item:hover {
@@ -353,6 +446,7 @@
         }
 
         .list-header {
+            flex-grow: 1;
             display: flex;
             justify-content: space-between;
             align-items: baseline;
@@ -772,6 +866,12 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-slideshow">
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+        </div>
         <div class="hero-content">
             <span class="section-subtitle"
                 style="margin-bottom: 1rem; color: var(--primary-color); font-weight: 700; font-size: 1.2rem; letter-spacing: 3px;">Taste
@@ -897,46 +997,60 @@
                 <!-- Tiffin -->
                 <div id="tiffin" class="menu-list active">
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Idli_Sambar.JPG/120px-Idli_Sambar.JPG"
+                            alt="Idli" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Idli</h3><span class="list-price">₹40</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Medu_Vadas.JPG/120px-Medu_Vadas.JPG"
+                            alt="Vada" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Vada</h3><span class="list-price">₹50</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/plain_dosa.png" alt="Plain Dosa" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Plain Dosa</h3><span class="list-price">₹60</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/masala_dosa.png" alt="Masala Dosa" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Masala Dosa</h3><span class="list-price">₹80</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/podi_dosa.png" alt="Podi Dosa" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Podi Dosa</h3><span class="list-price">₹90</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/ghee_roast_dosa.png" alt="Ghee Roast" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Ghee Roast</h3><span class="list-price">₹110</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Fluffy_Poori_%28cropped%29.JPG/120px-Fluffy_Poori_%28cropped%29.JPG"
+                            alt="Poori with Curry" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Poori with Curry</h3><span class="list-price">₹80</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/A_photo_of_Upma.jpg/120px-A_photo_of_Upma.jpg"
+                            alt="Upma" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Upma</h3><span class="list-price">₹50</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Ven_pongal_with_sambar_and_chutney.jpg/120px-Ven_pongal_with_sambar_and_chutney.jpg"
+                            alt="Pongal" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Pongal</h3><span class="list-price">₹70</span>
                         </div>
@@ -946,36 +1060,43 @@
                 <!-- Meals -->
                 <div id="meals" class="menu-list">
                     <div class="list-item">
+                        <img src="images/mini_meals.png" alt="Mini Meals" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Mini Meals</h3><span class="list-price">₹120</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/full_meals.png" alt="Full Meals" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Full Meals</h3><span class="list-price">₹180</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/andhra_meals.png" alt="Andhra Meals" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Andhra Meals</h3><span class="list-price">₹200</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/curd_rice.png" alt="Curd Rice" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Curd Rice</h3><span class="list-price">₹80</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/lemon_rice.png" alt="Lemon Rice" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Lemon Rice</h3><span class="list-price">₹80</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/tomato_rice.png" alt="Tomato Rice" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Tomato Rice</h3><span class="list-price">₹80</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/sambar_rice.png" alt="Sambar Rice" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Sambar Rice</h3><span class="list-price">₹80</span>
                         </div>
@@ -985,36 +1106,43 @@
                 <!-- Non-Veg -->
                 <div id="nonveg" class="menu-list">
                     <div class="list-item">
+                        <img src="images/chicken_biryani.png" alt="Chicken Biryani" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Chicken Biryani</h3><span class="list-price">₹250</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/egg_biryani.png" alt="Egg Biryani" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Egg Biryani</h3><span class="list-price">₹180</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/chicken_fry.png" alt="Chicken Fry" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Chicken Fry</h3><span class="list-price">₹220</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/andhra_chicken_curry.png" alt="Andhra Chicken Curry" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Andhra Chicken Curry</h3><span class="list-price">₹240</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/chicken_65.png" alt="Chicken 65" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Chicken 65</h3><span class="list-price">₹230</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/egg_curry.png" alt="Egg Curry" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Egg Curry</h3><span class="list-price">₹150</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/omelette.png" alt="Omelette" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Omelette</h3><span class="list-price">₹60</span>
                         </div>
@@ -1024,41 +1152,49 @@
                 <!-- Fast Food -->
                 <div id="fastfood" class="menu-list">
                     <div class="list-item">
+                        <img src="images/veg_fried_rice.png" alt="Veg Fried Rice" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Veg Fried Rice</h3><span class="list-price">₹160</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/chicken_fried_rice.png" alt="Chicken Fried Rice" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Chicken Fried Rice</h3><span class="list-price">₹220</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/egg_fried_rice.png" alt="Egg Fried Rice" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Egg Fried Rice</h3><span class="list-price">₹180</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/veg_noodles.png" alt="Veg Noodles" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Veg Noodles</h3><span class="list-price">₹150</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/egg_noodles.png" alt="Egg Noodles" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Egg Noodles</h3><span class="list-price">₹170</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/chicken_noodles.png" alt="Chicken Noodles" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Chicken Noodles</h3><span class="list-price">₹210</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/gobi_manchurian.png" alt="Gobi Manchurian" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Gobi Manchurian</h3><span class="list-price">₹160</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="images/chicken_manchurian.png" alt="Chicken Manchurian" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Chicken Manchurian</h3><span class="list-price">₹220</span>
                         </div>
@@ -1068,31 +1204,43 @@
                 <!-- Snacks -->
                 <div id="snacks" class="menu-list">
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/%D7%94%D7%9E%D7%91%D7%95%D7%A8%D7%92%D7%A8_%D7%98%D7%91%D7%A2%D7%95%D7%A0%D7%99.jpg/120px-%D7%94%D7%9E%D7%91%D7%95%D7%A8%D7%92%D7%A8_%D7%98%D7%91%D7%A2%D7%95%D7%A0%D7%99.jpg"
+                            alt="Veg Burger" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Veg Burger</h3><span class="list-price">₹120</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Chicken_salad_sandwich_01.jpg/120px-Chicken_salad_sandwich_01.jpg"
+                            alt="Chicken Burger" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Chicken Burger</h3><span class="list-price">₹180</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Vegetable_sandwiches.jpg/120px-Vegetable_sandwiches.jpg"
+                            alt="Veg Sandwich" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Veg Sandwich</h3><span class="list-price">₹100</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Egg_Sandwich.jpg/120px-Egg_Sandwich.jpg"
+                            alt="Egg Sandwich" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Egg Sandwich</h3><span class="list-price">₹130</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Chicken_salad_sandwich_01.jpg/120px-Chicken_salad_sandwich_01.jpg"
+                            alt="Chicken Sandwich" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Chicken Sandwich</h3><span class="list-price">₹160</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/French_Fries.JPG/120px-French_Fries.JPG"
+                            alt="French Fries" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">French Fries</h3><span class="list-price">₹90</span>
                         </div>
@@ -1102,41 +1250,57 @@
                 <!-- Beverages -->
                 <div id="beverages" class="menu-list">
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Chai_In_Sakora.jpg/120px-Chai_In_Sakora.jpg"
+                            alt="Tea" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Tea</h3><span class="list-price">₹25</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Latte_and_dark_coffee.jpg/120px-Latte_and_dark_coffee.jpg"
+                            alt="Coffee" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Coffee</h3><span class="list-price">₹35</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Filter_kaapi.JPG/120px-Filter_kaapi.JPG"
+                            alt="Filter Coffee" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Filter Coffee</h3><span class="list-price">₹45</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Malted_Milk_Can.jpg/120px-Malted_Milk_Can.jpg"
+                            alt="Boost" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Boost</h3><span class="list-price">₹50</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Mug_of_Horlicks.jpg/120px-Mug_of_Horlicks.jpg"
+                            alt="Horlicks" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Horlicks</h3><span class="list-price">₹50</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Lemonade_-_27682817724.jpg/120px-Lemonade_-_27682817724.jpg"
+                            alt="Lemon Juice" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Lemon Juice</h3><span class="list-price">₹60</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Mint_lassi.jpg/120px-Mint_lassi.jpg"
+                            alt="Buttermilk" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Buttermilk</h3><span class="list-price">₹40</span>
                         </div>
                     </div>
                     <div class="list-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Salt_lassi.jpg/120px-Salt_lassi.jpg"
+                            alt="Lassi" class="list-img">
                         <div class="list-header">
                             <h3 class="list-title">Lassi</h3><span class="list-price">₹80</span>
                         </div>
@@ -1245,46 +1409,6 @@
             </form>
         </div>
     </section>
-
-    <!-- Food Gallery -->
-    <section class="gallery section-padding" id="gallery" style="background-color: var(--surface-color);">
-        <div class="container-fluid text-center">
-            <span class="section-subtitle">Visuals</span>
-            <h2 class="section-title">Our Food Gallery</h2>
-            <br>
-            <div class="gallery-grid reveal">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1589301760014-d929f39ce9b0?w=800&q=80"
-                        alt="Crispy Dosa">
-                    <div class="gallery-overlay">
-                        <h4>Crispy Dosa</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=800&q=80"
-                        alt="Chicken Biryani">
-                    <div class="gallery-overlay">
-                        <h4>Chicken Dum Biryani</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=800&q=80"
-                        alt="Andhra Thali">
-                    <div class="gallery-overlay">
-                        <h4>Andhra Thali</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?w=800&q=80"
-                        alt="Filter Coffee">
-                    <div class="gallery-overlay">
-                        <h4>Filter Coffee</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Customer Reviews -->
     <section class="reviews section-padding" id="reviews">
         <div class="container text-center">
