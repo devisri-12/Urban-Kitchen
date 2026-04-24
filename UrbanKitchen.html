@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Urban Kitchen | Modern Culinary Experience</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --bg-color: #121212;
+            --surface-color: #1e1e1e;
+            --primary-color: #e67e22;
+            /* Warm Orange/Gold */
+            --primary-hover: #d35400;
+            --text-main: #f5f6fa;
+            --text-muted: #a4b0be;
+            --border-color: rgba(255, 255, 255, 0.1);
+
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+        /* Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-serif);
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .section-subtitle {
+            font-family: var(--font-sans);
+            color: var(--primary-color);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        /* Navbar */
+        .top-banner {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 0.6rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            z-index: 1001;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease;
+        }
+
+        header {
+            position: fixed;
+            top: 38px;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.4s ease, padding 0.4s ease, top 0.4s ease;
+            padding: 1.5rem 0;
+        }
+
+        header.scrolled {
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--surface-color);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            z-index: -1;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Menu Section - Tabs */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .menu-list {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            text-align: left;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .menu-list.active {
+            display: grid;
+        }
+
+        @media (max-width: 768px) {
+            .menu-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .list-item {
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .list-title {
+            font-size: 1.2rem;
+            font-family: var(--font-serif);
+        }
+
+        .list-price {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Reservation Section */
+        .reservation {
+            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+        }
+
+        .reservation-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .form-control {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.8rem 1rem;
+            font-family: var(--font-sans);
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .footer-col p {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--surface-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Badge Styles */
+        .badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 10;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Best Sellers & Combos */
+        .bestsellers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .offers-grid,
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card-item {
+            background-color: var(--surface-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-content .btn {
+            margin-top: auto !important;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-price {
+            font-family: var(--font-sans);
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Reviews */
+        .review-card {
+            background-color: var(--surface-color);
+            border-radius: 8px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .review-stars {
+            color: #f1c40f;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .review-author {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* Bottom CTA */
+        .bottom-cta {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+            text-align: center;
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-grid,
+            .form-row,
+            .bestsellers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+                /* In a real app, add a hamburger menu */
+            }
+
+            .btn {
+                padding: 1.2rem 2rem;
+                /* Larger touch targets */
+            }
+
+            header {
+                top: 42px;
+                /* adjust for banner wrapping on mobile */
+            }
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: var(--surface-color);
+            padding: 3rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        Today's Special: Andhra Chicken Fry - ₹220 | Order Now!
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Urban<span>Kitchen</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#reservation">Reservations</a></li>
+                <li><a href="#menu" class="btn btn-primary" style="padding: 0.5rem 1rem;">Order Now</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="section-subtitle"
+                style="margin-bottom: 1rem; color: var(--primary-color); font-weight: 700; font-size: 1.2rem; letter-spacing: 3px;">Taste
+                of Telugu Home (ఇంటి రుచి)</span>
+            <h1>The Urban Kitchen</h1>
+            <p>Authentic Andhra meals, sizzling biryanis, and traditional tiffins served with love. Experience the true
+                flavors of home.</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary">Order Now</a>
+                <a href="#reservation" class="btn btn-outline">Book a Table</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Sellers Section -->
+    <section class="bestsellers section-padding" id="bestsellers">
+        <div class="container text-center">
+            <span class="section-subtitle">Customer Favorites</span>
+            <h2 class="section-title">Most Ordered Dishes</h2>
+
+            <div class="bestsellers-grid reveal">
+                <!-- Best Seller 1 -->
+                <div class="card-item">
+                    <span class="badge">Most Ordered</span>
+                    <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Chicken Biryani" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Chicken Biryani</h3>
+                        <span class="card-price">₹250</span>
+                        <p class="card-desc">Authentic slow-cooked dum biryani with tender chicken and aromatic spices.
+                        </p>
+                        <a href="#reservation" class="btn btn-outline"
+                            style="margin-top: 1rem; width: 100%; text-align: center;">Order Now</a>
+                    </div>
+                </div>
+                <!-- Best Seller 2 -->
+                <div class="card-item">
+                    <span class="badge" style="background-color: #27ae60;">Top Rated</span>
+                    <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Andhra Meals" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Andhra Meals</h3>
+                        <span class="card-price">₹200</span>
+                        <p class="card-desc">A traditional full spread featuring rice, dal, curries, rasam, and fresh
+                            curd.</p>
+                        <a href="#reservation" class="btn btn-outline"
+                            style="margin-top: 1rem; width: 100%; text-align: center;">Order Now</a>
+                    </div>
+                </div>
+                <!-- Best Seller 3 -->
+                <div class="card-item">
+                    <span class="badge">Must Try</span>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE6oGjF2NY3BOutoIo2iFbPrZPFGPtt7QFYxCb0_95hdPXKAzyNGfzkQx6In2Ga_GwOuG1rg3d3fqH726UQIdvJvp3ICcgvOjl0E8evB8vI4IKzj7LDA&s=10&ec=121638480"
+                        alt="Masala Dosa" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Masala Dosa</h3>
+                        <span class="card-price">₹80</span>
+                        <p class="card-desc">Crispy golden dosa stuffed with a savory spiced potato filling. Served with
+                            chutneys.</p>
+                        <a href="#reservation" class="btn btn-outline"
+                            style="margin-top: 1rem; width: 100%; text-align: center;">Order Now</a>
+                    </div>
+                </div>
+                <!-- Best Seller 4 -->
+                <div class="card-item">
+                    <span class="badge" style="background-color: #c0392b;">Spicy</span>
+                    <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Chicken Fry" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Andhra Chicken Fry</h3>
+                        <span class="card-price">₹220</span>
+                        <p class="card-desc">Juicy chicken pieces pan-fried with roasted Guntur chilies and curry
+                            leaves.</p>
+                        <a href="#reservation" class="btn btn-outline"
+                            style="margin-top: 1rem; width: 100%; text-align: center;">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section-padding" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Chef plating a dish">
+                </div>
+                <div class="about-text reveal">
+                    <span class="section-subtitle">Our Story (ఆంధ్ర వంటలు)</span>
+                    <h2 class="section-title">Where Tradition Meets Urban Innovation</h2>
+                    <p>At The Urban Kitchen, we believe that food is more than just sustenance; it is an experience that
+                        brings people together. Founded with a passion for authentic Telugu flavors, our mission has
+                        been to redefine modern dining by
+                        infusing classic homestyle techniques with bold, contemporary presentations.</p>
+                    <p>Our executive chefs source the freshest seasonal ingredients from local farmers, ensuring every
+                        dish not only supports our community but delivers unparalleled taste. Join us for an
+                        unforgettable journey of culinary delight in an atmosphere that feels both exclusive and
+                        welcoming.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu section-padding" id="menu">
+        <div class="container text-center">
+            <span class="section-subtitle">Discover</span>
+            <h2 class="section-title">Our Menu</h2>
+            <br>
+
+            <div class="menu-tabs reveal">
+                <button class="tab-btn active" onclick="openTab(event, 'tiffin')">🍳 Tiffin</button>
+                <button class="tab-btn" onclick="openTab(event, 'meals')">🍛 Meals</button>
+                <button class="tab-btn" onclick="openTab(event, 'nonveg')">🍗 Non-Veg</button>
+                <button class="tab-btn" onclick="openTab(event, 'fastfood')">🍜 Fast Food</button>
+                <button class="tab-btn" onclick="openTab(event, 'snacks')">🍔 Snacks</button>
+                <button class="tab-btn" onclick="openTab(event, 'beverages')">🥤 Beverages</button>
+            </div>
+
+            <div class="menu-content-container reveal" style="margin-top: 3rem;">
+                <!-- Tiffin -->
+                <div id="tiffin" class="menu-list active">
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Idli</h3><span class="list-price">₹40</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Vada</h3><span class="list-price">₹50</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Plain Dosa</h3><span class="list-price">₹60</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Masala Dosa</h3><span class="list-price">₹80</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Podi Dosa</h3><span class="list-price">₹90</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Ghee Roast</h3><span class="list-price">₹110</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Poori with Curry</h3><span class="list-price">₹80</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Upma</h3><span class="list-price">₹50</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Pongal</h3><span class="list-price">₹70</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meals -->
+                <div id="meals" class="menu-list">
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Mini Meals</h3><span class="list-price">₹120</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Full Meals</h3><span class="list-price">₹180</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Andhra Meals</h3><span class="list-price">₹200</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Curd Rice</h3><span class="list-price">₹80</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Lemon Rice</h3><span class="list-price">₹80</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Tomato Rice</h3><span class="list-price">₹80</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Sambar Rice</h3><span class="list-price">₹80</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Non-Veg -->
+                <div id="nonveg" class="menu-list">
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Chicken Biryani</h3><span class="list-price">₹250</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Egg Biryani</h3><span class="list-price">₹180</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Chicken Fry</h3><span class="list-price">₹220</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Andhra Chicken Curry</h3><span class="list-price">₹240</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Chicken 65</h3><span class="list-price">₹230</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Egg Curry</h3><span class="list-price">₹150</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Omelette</h3><span class="list-price">₹60</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fast Food -->
+                <div id="fastfood" class="menu-list">
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Veg Fried Rice</h3><span class="list-price">₹160</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Chicken Fried Rice</h3><span class="list-price">₹220</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Egg Fried Rice</h3><span class="list-price">₹180</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Veg Noodles</h3><span class="list-price">₹150</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Egg Noodles</h3><span class="list-price">₹170</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Chicken Noodles</h3><span class="list-price">₹210</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Gobi Manchurian</h3><span class="list-price">₹160</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Chicken Manchurian</h3><span class="list-price">₹220</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Snacks -->
+                <div id="snacks" class="menu-list">
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Veg Burger</h3><span class="list-price">₹120</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Chicken Burger</h3><span class="list-price">₹180</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Veg Sandwich</h3><span class="list-price">₹100</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Egg Sandwich</h3><span class="list-price">₹130</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Chicken Sandwich</h3><span class="list-price">₹160</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">French Fries</h3><span class="list-price">₹90</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beverages -->
+                <div id="beverages" class="menu-list">
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Tea</h3><span class="list-price">₹25</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Coffee</h3><span class="list-price">₹35</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Filter Coffee</h3><span class="list-price">₹45</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Boost</h3><span class="list-price">₹50</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Horlicks</h3><span class="list-price">₹50</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Lemon Juice</h3><span class="list-price">₹60</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Buttermilk</h3><span class="list-price">₹40</span>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-header">
+                            <h3 class="list-title">Lassi</h3><span class="list-price">₹80</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 3rem;">
+                <a href="#reservation" class="btn btn-primary">Order Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Combos & Offers -->
+    <section class="offers section-padding" id="offers" style="background-color: var(--surface-color);">
+        <div class="container text-center">
+            <span class="section-subtitle">Specials</span>
+            <h2 class="section-title">Combos & Offers</h2>
+
+            <div class="offers-grid reveal">
+                <!-- Combo 1 -->
+                <div class="card-item">
+                    <span class="badge" style="background-color: #e74c3c;">Save ₹50</span>
+                    <img src="https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Meals and Chicken Curry" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Meals + Chicken Curry</h3>
+                        <span class="card-price">₹390</span>
+                        <p class="card-desc">Full Andhra Meals served with our spicy signature Chicken Curry.</p>
+                        <a href="#reservation" class="btn btn-outline"
+                            style="margin-top: 1.5rem; width: 100%; text-align: center;">Order Combo</a>
+                    </div>
+                </div>
+                <!-- Combo 2 -->
+                <div class="card-item">
+                    <span class="badge" style="background-color: #f39c12;">Best Value</span>
+                    <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Biryani and Drink" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Biryani + Drink</h3>
+                        <span class="card-price">₹299</span>
+                        <p class="card-desc">Chicken Dum Biryani paired with a refreshing glass of Sweet Lassi.</p>
+                        <a href="#reservation" class="btn btn-outline"
+                            style="margin-top: 1.5rem; width: 100%; text-align: center;">Order Combo</a>
+                    </div>
+                </div>
+                <!-- Combo 3 -->
+                <div class="card-item">
+                    <span class="badge" style="background-color: #9b59b6;">Breakfast Deal</span>
+                    <img src="https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Dosa and Coffee" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Dosa + Filter Coffee</h3>
+                        <span class="card-price">₹110</span>
+                        <p class="card-desc">Start your day right with a crispy Masala Dosa and hot Filter Coffee.</p>
+                        <a href="#reservation" class="btn btn-outline"
+                            style="margin-top: 1.5rem; width: 100%; text-align: center;">Order Combo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section class="reservation section-padding" id="reservation">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-subtitle">Book A Table</span>
+                <h2 class="section-title">Reserve Your Experience</h2>
+            </div>
+            <br><br>
+            <form class="reservation-form reveal" id="bookingForm" onsubmit="handleBooking(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required placeholder="john@example.com">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Number of Guests</label>
+                        <select id="guests" class="form-control" required>
+                            <option value="1">1 Person</option>
+                            <option value="2" selected>2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5+ People</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label for="special">Special Requests</label>
+                    <input type="text" id="special" class="form-control" placeholder="Allergies, anniversaries, etc.">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Request Booking</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="reviews section-padding" id="reviews">
+        <div class="container text-center">
+            <span class="section-subtitle">Testimonials</span>
+            <h2 class="section-title">What Our Guests Say</h2>
+
+            <div class="reviews-grid reveal">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"The Chicken Dum Biryani here is absolutely incredible. It instantly reminded
+                        me of the authentic flavors back home in Andhra. Highly recommend!"</p>
+                    <span class="review-author">- Ravi Kumar</span>
+                </div>
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"We ordered the Meals combo and the Chicken Fry. Everything was packed
+                        perfectly, fresh, and had the perfect amount of spice. New favorite spot!"</p>
+                    <span class="review-author">- Priya M.</span>
+                </div>
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Finally, a place that gets Masala Dosa right! Crispy on the outside and
+                        flavorful inside. Great service and super fast."</p>
+                    <span class="review-author">- Arjun S.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="bottom-cta section-padding reveal">
+        <div class="container">
+            <h2 style="font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 1rem;">Craving Authentic Telugu
+                Food?</h2>
+            <p style="margin: 1.5rem 0; font-size: 1.2rem; color: #eee;">Order now and get fresh, hot meals delivered
+                straight to you.</p>
+            <a href="#menu" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.2rem 2.5rem;">Order Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>The Urban Kitchen</h4>
+                    <p>A modern culinary destination redefining dining with passion, flavor, and elegance.</p>
+                    <div class="social-links">
+                        <a href="#">Fb</a>
+                        <a href="#">Ig</a>
+                        <a href="#">Tw</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <p>📞 +91 6305575919</p>
+                    <p>✉️ devisriprasad0206.com</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Opening Hours</h4>
+                    <p><strong>Breakfast:</strong> 07:00 AM - 11:00 AM</p>
+                    <p><strong>Lunch:</strong> 12:00 PM - 03:30 PM</p>
+                    <p><strong>Snacks:</strong> 04:00 PM - 06:30 PM</p>
+                    <p><strong>Dinner:</strong> 07:00 PM - 10:30 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Urban Kitchen. All Rights Reserved. Designed by Vecha Devisri Prasad.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Sticky Header
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger once on load
+
+        // Booking Modal Logic
+        function handleBooking(event) {
+            event.preventDefault();
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('active');
+            document.getElementById('bookingForm').reset();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.remove('active');
+        }
+
+        // Tab Menu Logic
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+
+            // Hide all menu lists
+            tabcontent = document.getElementsByClassName("menu-list");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+
+            // Remove active class from all buttons
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            // Show current tab and set button active
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal">
+            <h3>Booking Confirmed!</h3>
+            <p>Thank you for your reservation. A confirmation email and text message have been sent to your provided
+                details.</p>
+            <button class="btn btn-primary" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+</body>
+
+</html>
